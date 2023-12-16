@@ -1,0 +1,27 @@
+{# templates/order/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block body %}
+    <h1>Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Номер по порядку</th>
+                <th>Название заказа</th>
+                <th>ФИ менеджера</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.manager.firstName }} {{ order.manager.lastName }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(orders) }}
+{% endblock %}
